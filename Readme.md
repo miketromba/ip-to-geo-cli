@@ -83,7 +83,14 @@ ip-to-geo get-coords 1.1.1.1
 
 ## Publishing a new version
 1. Increment semver-compliant version in package.json according to changes
-2. Push changes to GitHub (GitHub actions will automatically build and publish an image to Docker Hub with the new version)
+2. Build the new docker image with the following command (replace "new_version"):
+```sh
+docker build . -t miketromba/ip-to-geo-cli:new_version
+```
+3. Push the image to Docker Hub
+```sh
+docker push miketromba/ip-to-geo-cli:new_version
+```
 
 # Future Improvements
 - Support HTTPS queries to the IPStack API (HTTPS queries to IPStack require a paid plan)
@@ -93,3 +100,4 @@ ip-to-geo get-coords 1.1.1.1
 - Improve the developer experience so that users don't have to type out the entire Docker command (and their API key) each time they want to invoke the CLI. Possibly provide some kind of alias script to invoke the CLI and store the user's API credential securely in a file on their machine. Possibly provide a command like `ip-to-geo config` (AWS CLIs tend to follow this pattern) which will ask them to paste their API key and automatically save it for them. Finally, adjust the docker command to bind that config file as a volume.
 - Explore migrating to bun / deno for improved image size?
 - Adjust "Making the CLI easier to run" portion of Readme to add documentation for Windows users.
+- Implement basic CI/CD pipeline with GitHub actions to automatically detect when new versions are merged into the main branch and build the Docker image + push it to Docker Hub.
