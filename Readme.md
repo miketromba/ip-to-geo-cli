@@ -44,10 +44,14 @@ docker run --rm -it miketromba/ip-to-geo-cli:1.0.0 help
 
 ## Making the CLI easier to run
 It's a bit annoying to type out the entire docker command in order to work with the CLI. Because of this, we recommend downloading this shell script: [`ip-to-geo.sh`](/ip-to-geo.sh)
-On Mac/Linux machines, you can run the command below to download it easily:
+On Mac/Linux machines, you can run the commands below to download it easily:
 ```sh
 curl -O https://github.com/miketromba/ip-to-geo-cli/ip-to-geo.sh
 chmod +x ip-to-geo.sh
+```
+Then, add the ip-to-geo.sh file to your path so that you can simplify the command to:
+```sh
+ip-to-geo get-coords 1.1.1.1
 ```
 
 
@@ -74,4 +78,6 @@ chmod +x ip-to-geo.sh
 - Add tests as needed
 - Add eslint for tighter constraints on code quality
 - Add .prettierrc & .editorconfig files for establishing code style defaults
-- Improve the developer experience so that users don't have to type out the entire Docker command (and their API key) each time they want to invoke the CLI. Possibly provide some kind of alias script to invoke the CLI and store the user's API credential securely in a file on their machine. Possibly provide a command like `ip-to-geo config` which will ask them to paste their API key and automatically save it for them. Finally, adjust the docker command to bind that config file as a volume.
+- Improve the developer experience so that users don't have to type out the entire Docker command (and their API key) each time they want to invoke the CLI. Possibly provide some kind of alias script to invoke the CLI and store the user's API credential securely in a file on their machine. Possibly provide a command like `ip-to-geo config` (AWS CLIs tend to follow this pattern) which will ask them to paste their API key and automatically save it for them. Finally, adjust the docker command to bind that config file as a volume.
+- Explore migrating to bun / deno for improved image size?
+- Adjust "Making the CLI easier to run" portion of Readme to add documentation for Windows users.
