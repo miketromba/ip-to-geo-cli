@@ -45,8 +45,8 @@ docker run --rm -it miketromba/ip-to-geo-cli help
 ```
 
 ## Making the CLI easier to run
-It's a bit annoying to type out the entire docker command in order to work with the CLI. Because of this, we recommend downloading this shell script: [`ip-to-geo.sh`](/ip-to-geo.sh)
-On Mac/Linux machines, you can run the command below to install it easily:
+It's a bit annoying to type out the entire docker command in order to work with the CLI. Because of this, we recommend installing this shell script: [`ip-to-geo.sh`](/ip-to-geo.sh) and adding it to your PATH instead.
+On Mac/Linux machines, you can run the command below to install it:
 ```sh
 sudo curl -o /usr/local/bin/ip-to-geo https://raw.githubusercontent.com/miketromba/ip-to-geo-cli/main/ip-to-geo.sh && sudo chmod +x /usr/local/bin/ip-to-geo
 ```
