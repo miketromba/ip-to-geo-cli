@@ -17,7 +17,7 @@
 2. Run the CLI using the following command to retrieve coordinates for a given IP address. (**Make sure to replace "your_api_key"**)
 
 ```sh
-docker run --rm -it -e IPSTACK_API_KEY=your_api_key miketromba/ip-to-geo-cli get-coords 1.1.1.1
+docker run --rm -e IPSTACK_API_KEY=your_api_key miketromba/ip-to-geo-cli get-coords 1.1.1.1
 ```
 Which will output:
 ```c
@@ -41,7 +41,7 @@ You can control the output format of the `get-coords` command for easier parsing
 ## Help
 Run the CLI with the `help` command for additional documentation.
 ```sh
-docker run --rm -it miketromba/ip-to-geo-cli help
+docker run --rm miketromba/ip-to-geo-cli help
 ```
 
 ## Making the CLI easier to run
