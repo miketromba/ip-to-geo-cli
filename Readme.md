@@ -61,7 +61,8 @@ Zsh:
 echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
 > **Note:** You may need to re-start your terminal after adding the script to your PATH.
-So that you can simplify the command to:
+
+Now, you can simplify the command to:
 ```sh
 ip-to-geo get-coords 1.1.1.1
 ```
