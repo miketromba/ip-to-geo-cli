@@ -54,11 +54,11 @@ Then, add the ip-to-geo.sh file to your machine's PATH:
 
 Bash:
 ```sh
-echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 ```
 Zsh:
 ```sh
-echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
 > **Note:** You may need to re-start your terminal after adding the script to your PATH.
 So that you can simplify the command to:
@@ -83,13 +83,13 @@ ip-to-geo get-coords 1.1.1.1
 
 ## Publishing a new version
 1. Increment semver-compliant version in package.json according to changes
-2. Build the new docker image with the following command (replace "new_version"):
+2. Build and push the new docker image to Docker Hub with the following command (replace "NEW_VERSION"):
 ```sh
-docker build . -t miketromba/ip-to-geo-cli:new_version
+docker build . -t miketromba/ip-to-geo-cli:NEW_VERSION && docker push miketromba/ip-to-geo-cli:NEW_VERSION
 ```
-3. Push the image to Docker Hub
+3. Also build & push the image using the `:latest` tag
 ```sh
-docker push miketromba/ip-to-geo-cli:new_version
+docker build . -t miketromba/ip-to-geo-cli && docker push miketromba/ip-to-geo-cli:latest
 ```
 
 # Future Improvements
