@@ -5,4 +5,4 @@ if [ -z "$IPSTACK_API_KEY" ]; then
     exit 1
 fi
 # Run the container
-docker run --rm -it -e IPSTACK_API_KEY=$IPSTACK_API_KEY miketromba/ip-to-geo-cli:1.0.0 "$@"
+docker run --rm -it -e IPSTACK_API_KEY=$IPSTACK_API_KEY miketromba/ip-to-geo-cli "$@"

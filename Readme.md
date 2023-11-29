@@ -3,6 +3,8 @@
 
 **Warning:** This CLI uses the free, HTTP-only version of the IPStack service. Any IPs you pass through it (and the returned geolocation information) will be transmitted insecurely.
 
+**Note:** The installation documentation in this Readme is only provided for Unix-like systems (Mac / Linux) at this time.
+
 ## Installation
 1. [Install Docker](https://www.docker.com/get-started/) on your machine
 2. Run the command: `docker pull miketromba/ip-to-geo-cli:latest` to pull the latest version from Docker Hub
@@ -15,7 +17,7 @@
 2. Run the CLI using the following command to retrieve coordinates for a given IP address. (**Make sure to replace "your_api_key"**)
 
 ```sh
-docker run --rm -it -e IPSTACK_API_KEY=your_api_key miketromba/ip-to-geo-cli:1.0.0 get-coords 1.1.1.1
+docker run --rm -it -e IPSTACK_API_KEY=your_api_key miketromba/ip-to-geo-cli get-coords 1.1.1.1
 ```
 Which will output:
 ```c
@@ -39,17 +41,27 @@ You can control the output format of the `get-coords` command for easier parsing
 ## Help
 Run the CLI with the `help` command for additional documentation.
 ```sh
-docker run --rm -it miketromba/ip-to-geo-cli:1.0.0 help
+docker run --rm -it miketromba/ip-to-geo-cli help
 ```
 
 ## Making the CLI easier to run
 It's a bit annoying to type out the entire docker command in order to work with the CLI. Because of this, we recommend downloading this shell script: [`ip-to-geo.sh`](/ip-to-geo.sh)
-On Mac/Linux machines, you can run the commands below to download it easily:
+On Mac/Linux machines, you can run the command below to install it easily:
 ```sh
-curl -O https://github.com/miketromba/ip-to-geo-cli/ip-to-geo.sh
-chmod +x ip-to-geo.sh
+sudo curl -o /usr/local/bin/ip-to-geo https://raw.githubusercontent.com/miketromba/ip-to-geo-cli/main/ip-to-geo.sh && sudo chmod +x /usr/local/bin/ip-to-geo
 ```
-Then, add the ip-to-geo.sh file to your path so that you can simplify the command to:
+Then, add the ip-to-geo.sh file to your machine's PATH:
+
+Bash:
+```sh
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+Zsh:
+```sh
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+```
+> **Note:** You may need to re-start your terminal after adding the script to your PATH.
+So that you can simplify the command to:
 ```sh
 ip-to-geo get-coords 1.1.1.1
 ```
